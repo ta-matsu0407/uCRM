@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CustomerController;
 
 Route::resource('items', ItemController::class)
 ->middleware(['auth', 'verified']);
@@ -14,6 +15,9 @@ Route::resource('items', ItemController::class)
 // nameは自動的に設定されるので記載不要
 // Inertia::render()でSPA対応
 // LaravelのRoute::resourceなどはMPAになり都度ページ読み込みが発生
+
+Route::resource('customers', CustomerController::class)
+->middleware(['auth', 'verified']);
 
 Route::get('/inertia-test', function () {
     return Inertia::render('InrtiaTest');
